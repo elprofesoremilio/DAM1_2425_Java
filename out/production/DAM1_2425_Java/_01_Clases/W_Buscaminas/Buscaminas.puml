@@ -1,0 +1,31 @@
+@startuml
+
+class Casilla {
+    + boolean mina
+    + boolean bandera
+    + boolean destapada
+    + int alrededor
+    + Casilla()
+    + destapar() : int
+    + marcar()
+}
+'¿Quién guarda las coordenadas de la casilla?
+class Tablero {
+    + Casilla[][] casilla
+    + Tablero(dificultad)
+    + destaparCasilla(x,y)
+    + destaparMinas()
+    + marcarCasilla(x,y)
+}
+class Interfaz {
+    + Tablero tablero
+    + iniciarJuego()
+    + destaparCasilla(x,y)
+    + marcarCasilla(x,y)
+    + finJuego(boolean)
+}
+
+Interfaz "1" --r "1" Tablero
+Tablero "1" -- "*" Casilla
+Interfaz ..> Casilla
+@enduml
