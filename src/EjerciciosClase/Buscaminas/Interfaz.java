@@ -1,4 +1,4 @@
-package _01_Clases.W_Buscaminas;
+package EjerciciosClase.Buscaminas;
 
 public class Interfaz {
     Tablero tablero;

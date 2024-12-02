@@ -1,6 +1,4 @@
-package _01_Clases.Z_Arkanoid;
-
-import java.awt.*;
+package EjerciciosClase.Arkanoid;
 
 public class Player {
     int x, y;

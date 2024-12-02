@@ -1,4 +1,4 @@
-package _01_Clases.Z_Arkanoid;
+package EjerciciosClase.Arkanoid;
 
 public class Color {
     public short r, g, b;

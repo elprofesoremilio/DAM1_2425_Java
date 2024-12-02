@@ -1,4 +1,4 @@
-package _01_Clases.Z_Arkanoid;
+package EjerciciosClase.Arkanoid;
 
 public class Main {
     public static void main(String[] args) {

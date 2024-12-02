@@ -1,6 +1,4 @@
-package _01_Clases.Z_Arkanoid;
-
-import java.util.Scanner;
+package EjerciciosClase.Arkanoid;
 
 public class Config {
     public static final int SCREEN_WIDTH = 1200;
