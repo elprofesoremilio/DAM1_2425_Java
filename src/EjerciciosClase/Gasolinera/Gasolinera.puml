@@ -18,11 +18,11 @@ class Surtidor {
     - float litrosSurtidosCoche
 
     + calcularImporte() : float
-    + surtirLitros(float litros) : float
-    + llenarDepósito() : float
-    + surtirPorPrecio(float importe) : float
+    + surtirLitros(litros, coche) : float
+    + llenarDepósito(coche) : float
+    + surtirPorPrecio(importe, coche) : float
     + rellenarSurtidor() : float
-    + rellenarSurtidor(float litros) : float
+    + rellenarSurtidor(litros) : float
 }
 Surtidor -u- Coche
 

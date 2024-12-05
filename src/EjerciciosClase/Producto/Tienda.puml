@@ -1,0 +1,12 @@
+@startuml
+class Producto {
+    - nombre : String
+    - precio : float
+    - stock : int
+
+
+    + C/G/S()
+}
+
+
+@enduml
