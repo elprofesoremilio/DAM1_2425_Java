@@ -42,11 +42,15 @@ public class Coche {
 
     public float cargarCombustible(float litros) {
         float litrosReales;
-        if (litros + combustibleActual <= capacidadDeposito) {
-            this.combustibleActual += litros;
-            litrosReales = litros;
+        if (!isEncendido()) {
+            if (litros + combustibleActual <= capacidadDeposito) {
+                this.combustibleActual += litros;
+                litrosReales = litros;
+            } else {
+                litrosReales = llenarDeposito();
+            }
         } else {
-            litrosReales = llenarDeposito();
+            litrosReales = -1;
         }
         return litrosReales;
     }
@@ -56,8 +60,13 @@ public class Coche {
      * @return float -> litros reales añadidos al depósito hasta llenarlo.
      */
     public float llenarDeposito() {
-        float litrosReales = capacidadDeposito - combustibleActual;
-        this.combustibleActual = capacidadDeposito;
+        float litrosReales;
+        if (!isEncendido()) {
+            litrosReales = capacidadDeposito - combustibleActual;
+            this.combustibleActual = capacidadDeposito;
+        } else {
+            litrosReales = -1;
+        }
         return litrosReales;
     }
 

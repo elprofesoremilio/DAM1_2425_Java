@@ -25,9 +25,12 @@ class Cajero {
     - tarjeta : Tarjeta
 
     + C/G/S()
-    + solicitarPin() : boolean
+    + introducirTarjeta (tarjeta) : ?
+    + comprobarPin() : boolean
     + elegirOpciones() : int
-    + solicitarCantidad(float) : void
+    + solicitarCantidad(cantidad) : void
+    + retirar(cantidad) : ?
+    + ingresar(cantidad) : ?
 }
 
 Tarjeta -- Cajero
