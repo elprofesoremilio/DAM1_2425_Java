@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor Jugador
+Jugador -> Interfaz: Iniciar juego
+Interfaz -> Tablero: New
+loop n veces
+    Tablero -> Casilla : New
+    return
+end loop
+Tablero --> Interfaz : Ok
+Interfaz --> Jugador : mostrar tablero
+loop hasta fin partida
+    alt
+        Jugador -> Interfaz : Destapar casilla
+        Interfaz -> Tablero : Destapar casilla
+        Tablero -> Casilla : Destapar
+        alt Hay mina
+            return true
+            Tablero --> Interfaz : fin de partida
+            Interfaz --> Jugador : fin de partida
+        else No hay mina
+            Casilla --> Tablero : false
+            Tablero -> Tablero : contar minas alrededor
+            Tablero -> Casilla : asignar número
+            return
+            alt cantidad minas > 0
+                Tablero --> Interfaz : número minas
+            else cantidad minas = 0
+                Tablero -> Tablero : destapar casillas alrededor
+                Tablero --> Interfaz : destapar casillas
+            end
+            Tablero --> Interfaz : minas restantes
+            alt casillas restantes = total minas
+                Interfaz --> Jugador : fin de partida
+            else
+                Interfaz --> Jugador : casillas destapadas
+            end
+        end
+
+    else
+        Jugador -> Interfaz : Marcar
+        Interfaz -> Tablero : marcar casilla
+        Tablero -> Casilla : marcar
+        Interfaz -> Jugador : casilla marcada
+    end
+    Interfaz --> Jugador : fin de juego
+end loop
+@enduml

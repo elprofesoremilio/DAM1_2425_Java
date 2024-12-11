@@ -1,0 +1,43 @@
+@startuml
+
+class CuentaBancaria {
+    - numeroCuenta : int
+    - titular : String
+    - saldo : float
+
+    + C/G/S()
+    + retirar(float cantidad) : ?
+    + ingresar(float cantidad) : ?
+}
+
+class Tarjeta {
+    - numeroTarjeta : int
+    - cuenta : CuentaBancaria
+    - pin : int
+
+    + C/G/S()
+    + retirar(float cantidad) : ?
+    + ingresar(float cantidad) : ?
+    + comprobarPin(int) : boolean
+}
+
+class Cajero {
+    - tarjeta : Tarjeta
+
+    + C/G/S()
+    + introducirTarjeta (tarjeta) : ?
+    + comprobarPin() : boolean
+    + elegirOpciones() : int
+    + solicitarCantidad(cantidad) : void
+    + retirar(cantidad) : ?
+    + ingresar(cantidad) : ?
+}
+
+Tarjeta -- Cajero
+CuentaBancaria -- Tarjeta
+
+note left of CuentaBancaria : Modelo
+note left of Tarjeta : Controlador
+note left of Cajero : Vista
+
+@enduml

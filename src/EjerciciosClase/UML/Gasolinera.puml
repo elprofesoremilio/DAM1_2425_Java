@@ -1,0 +1,48 @@
+@startuml
+class Coche {
+    - matrícula : String
+    - litrosDepósito : int
+    - capacidadDepósito : int
+    - encendido : boolean
+
+    + C/G/S()
+    + cargarCombustible(litros) : int
+    + llenarDepósito() : int
+    + encender()
+    + apagar()
+}
+
+class Surtidor {
+    - capacidad : int
+    - litrosActuales : int
+    - precioLitro : float
+
+    + calcularImporte() : float
+    + rellenarSurtidor() : float
+    + rellenarSurtidor(litros) : float
+    + surtirLitros(litros, coche) : float
+    + llenarDepósito(coche) : float
+    + surtirPorPrecio(importe, coche) : float
+}
+
+class Manguera {
+    - litrosSurtidosCoche : int
+    - surtidor : Surtidor
+
+    + surtirLitros(litros, coche) : float
+    + llenarDepósito(coche) : float
+}
+
+class Pantalla {
+    - lector : Scanner
+    - surtidor : Surtidor
+
+    + atender(coche : Coche) : int
+    + actualizarImporte() : void
+}
+
+Surtidor -u- Coche
+Surtidor -- Manguera
+Surtidor -- Pantalla
+
+@enduml

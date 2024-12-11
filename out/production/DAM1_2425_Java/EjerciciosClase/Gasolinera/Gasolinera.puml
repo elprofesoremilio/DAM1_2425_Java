@@ -1,17 +1,16 @@
 @startuml
 class Coche {
-    - matrícula : String
-    - litrosDepósito : float
-    - capacidadDepósito : float
-    - encendido : float
+    - String matrícula
+    - float depósito
+    - float capacidad
+    - boolean encendido
 
     + C/G/S()
-    + cargarCombustible(litros) : boolean
+    + cargarCombustible(float litros) : boolean
     + llenarDepósito() : float
     + encender()
     + apagar()
 }
-
 class Surtidor {
     - float capacidad
     - float litrosActuales
