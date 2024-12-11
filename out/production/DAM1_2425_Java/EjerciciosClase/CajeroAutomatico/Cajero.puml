@@ -1,7 +1,6 @@
 @startuml
 
 class CuentaBancaria {
-    - numeroCuenta : int
     - titular : String
     - saldo : float
 
@@ -11,7 +10,6 @@ class CuentaBancaria {
 }
 
 class Tarjeta {
-    - numeroTarjeta : int
     - cuenta : CuentaBancaria
     - pin : int
 
@@ -28,9 +26,10 @@ class Cajero {
     + introducirTarjeta (tarjeta) : ?
     + comprobarPin() : boolean
     + elegirOpciones() : int
-    + solicitarCantidad(cantidad) : void
-    + retirar(cantidad) : ?
-    + ingresar(cantidad) : ?
+    + solicitarCantidad() : float
+    + retirar() : ?
+    + ingresar() : ?
+    + arrancarCajero() : void
 }
 
 Tarjeta -- Cajero
