@@ -2,7 +2,7 @@ package _02_EstructurasControl;
 
 import java.util.Scanner;
 
-public class menuConBuclesVariacion {
+public class o_menuConBuclesVariacion {
     public static void main(String[] args) {
         String menu = "\n------------\n" +
                 "1. Sumar\n" +

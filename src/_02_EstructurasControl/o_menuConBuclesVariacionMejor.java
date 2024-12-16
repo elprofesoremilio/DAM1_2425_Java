@@ -2,7 +2,7 @@ package _02_EstructurasControl;
 
 import java.util.Scanner;
 
-public class menuConBuclesVariacionMejor {
+public class o_menuConBuclesVariacionMejor {
     private static final Scanner sc = new Scanner(System.in);
 
     public static int elegirOpcion() {
