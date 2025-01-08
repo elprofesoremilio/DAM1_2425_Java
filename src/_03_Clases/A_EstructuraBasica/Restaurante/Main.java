@@ -2,11 +2,13 @@ package _03_Clases.A_EstructuraBasica.Restaurante;
 
 public class Main {
     public static void main(String[] args) {
-        Cliente paco = new Cliente();
+        Cliente paco = new Cliente("Paco", 21);
+        Producto cafe = new Producto();
 
-        paco.nombre = "Paco";
-        paco.mesa = 21;
+        cafe.nombre = "Café solo";
+        cafe.precio = 1.5f;
 
         paco.presentarse();
+        cafe.presentarse();
     }
 }
