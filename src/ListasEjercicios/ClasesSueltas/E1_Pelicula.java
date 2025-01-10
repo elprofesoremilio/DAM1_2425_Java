@@ -1,4 +1,4 @@
-package EjerciciosClase.Listas.ClasesSueltas;
+package ListasEjercicios.ClasesSueltas;
 
 public class E1_Pelicula {
     String titulo;

@@ -1,4 +1,4 @@
-package EjerciciosClase.Listas.Matrices;
+package ListasEjercicios.Matrices;
 
 import java.util.Arrays;
 import java.util.Random;

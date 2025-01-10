@@ -1,4 +1,4 @@
-package EjerciciosClase.Listas.ClasesSueltas;
+package ListasEjercicios.ClasesSueltas;
 
 public class E2_Estudiante {
     private String nombre;
