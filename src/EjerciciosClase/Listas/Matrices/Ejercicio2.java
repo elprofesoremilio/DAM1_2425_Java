@@ -1,4 +1,4 @@
-package EjerciciosClase.Matrices;
+package EjerciciosClase.Listas.Matrices;
 
 public class Ejercicio2 {
     public static void main(String[] args) {

@@ -1,12 +1,12 @@
-package _03_Clases.A_EstructuraBasica.ClasesSueltas;
+package EjerciciosClase.Listas.ClasesSueltas;
 
-public class Estudiante {
+public class E2_Estudiante {
     private String nombre;
     private String grado;
     private int edad;
     private double promedio;
 
-    public Estudiante(String nombre, String grado, int edad, double promedio) {
+    public E2_Estudiante(String nombre, String grado, int edad, double promedio) {
         this.edad = edad;
         this.nombre = nombre;
         this.grado = grado;
@@ -83,7 +83,7 @@ public class Estudiante {
     }
 
     public static void main(String[] args) {
-        Estudiante pepe = new Estudiante("Pepe", "Superior", 19, 1.0);
+        E2_Estudiante pepe = new E2_Estudiante("Pepe", "Superior", 19, 1.0);
         System.out.println("El alumno " + pepe.getNombre() + " supera el curso: " + (pepe.isAprobado()?"Sí":"No"));
     }
 }

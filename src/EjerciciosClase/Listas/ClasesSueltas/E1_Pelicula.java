@@ -1,12 +1,12 @@
-package _03_Clases.A_EstructuraBasica.ClasesSueltas;
+package EjerciciosClase.Listas.ClasesSueltas;
 
-public class Pelicula {
+public class E1_Pelicula {
     String titulo;
     String director;
     int anio;
     String genero;
 
-    Pelicula(String titulo, String director, int anio, String genero) {
+    E1_Pelicula(String titulo, String director, int anio, String genero) {
         this.anio = anio;
         this.director = director;
         this.titulo = titulo;
@@ -22,7 +22,7 @@ public class Pelicula {
     }
 
     public static void main(String[] args) {
-        Pelicula bambi = new Pelicula("Bambi", "Disney", 1970, "Penoso");
+        E1_Pelicula bambi = new E1_Pelicula("Bambi", "Disney", 1970, "Penoso");
         bambi.mostrarDatos();
     }
 }
