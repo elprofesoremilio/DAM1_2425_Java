@@ -11,10 +11,26 @@ public class Ejercicio3_Producto {
         this.precio = precio;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
     @Override
     public String toString() {
         return String.format(
-            "Nombre: %s\nPrecio: %.2f",
+            "Nombre: %s\nPrecio: %.2f€",
             this.nombre, this.precio
         );
     }
@@ -32,9 +48,14 @@ public class Ejercicio3_Producto {
 
     public static void main(String[] args) {
         Ejercicio3_Producto papas = new Ejercicio3_Producto("Papas", 1.5f);
+        Ejercicio3_Producto popas = new Ejercicio3_Producto("Papas", 1.5f);
         Ejercicio3_Producto leche = new Ejercicio3_Producto("Leche", 1.3f);
 
+
         System.out.println(papas.equals(leche));
+        System.out.println(popas.equals(papas));
+        System.out.println(leche);
+        System.out.println(papas);
 
     }
 }
