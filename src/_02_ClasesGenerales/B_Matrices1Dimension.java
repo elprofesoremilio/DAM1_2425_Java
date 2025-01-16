@@ -41,7 +41,6 @@ public class B_Matrices1Dimension {
             System.out.println(diasSemana[i]);
         }
 
-
         // Vamos a calcular la media de las notas anteriores
         float suma = 0;
         for (float nota : notas) {
@@ -57,6 +56,5 @@ public class B_Matrices1Dimension {
             }
         }
         System.out.println("Nota máxima = " + notaMaxima);
-
     }
 }
