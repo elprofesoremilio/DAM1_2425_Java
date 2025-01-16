@@ -21,6 +21,7 @@ public class Ejercicio19 {
         System.out.println(Arrays.toString(alturas));
 
         int suma = 0;
+        // Para cada altura que haya en la matriz alturas
         for (int altura : alturas) {
             suma += altura;
         }
