@@ -49,4 +49,9 @@ public class Animal {
 
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        return nombre.hashCode() + Integer.hashCode(edad);
+    }
 }

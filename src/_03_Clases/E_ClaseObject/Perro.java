@@ -1,5 +1,7 @@
 package _03_Clases.E_ClaseObject;
 
+import java.util.Objects;
+
 public class Perro {
     private String nombre;
     private int edad;
@@ -15,10 +17,15 @@ public class Perro {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        Perro p = (Perro)obj;
-        return (p.nombre.equals(this.nombre) && edad == p.edad);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Perro perro = (Perro) o;
+        return edad == perro.edad && Objects.equals(nombre, perro.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, edad);
     }
 }
