@@ -62,6 +62,17 @@ public class C_ArrayList {
         longitud--;
     }
 
+    public void remove(int beginIndex, int endIndex) {
+        int[] nuevosDatos = new int[longitud]; // _ _ _ _  ---> 1, 2 ---> _ _
+        for (int i = 0; i < beginIndex; i++) {
+            nuevosDatos[i] = datos[i];
+        }
+        for (int i = endIndex; i < nuevosDatos.length;i++){
+            nuevosDatos[i] = datos[i];
+        }
+        datos = nuevosDatos;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -82,7 +93,7 @@ public class C_ArrayList {
     }
 
     public static void main(String[] args) {
-        C_ArrayList matriz = new C_ArrayList(5);
+        C_ArrayList matriz = new C_ArrayList(10);
         Random r = new Random();
         for (int i=0; i<matriz.size(); i++) {
             matriz.setDato(i,r.nextInt(11)); // matriz[i] = r.nextInt(11);
@@ -90,26 +101,29 @@ public class C_ArrayList {
 
         System.out.println(matriz);
 
-        matriz.setSize(7);
-        matriz.setDato(matriz.size()-1, 88);
-        matriz.add(77);
+//        matriz.setSize(7);
+//        matriz.setDato(matriz.size()-1, 88);
+//        matriz.add(77);
+//
+//        System.out.println(matriz);
+//
+//
+//        matriz.add(2, 33);
+//        matriz.add(0, 0);
+//        matriz.add(matriz.size()-1, 99);
+//        matriz.add(matriz.size(), 99);
+//
+//        System.out.println(matriz);
+//
+//        matriz.remove(3);
+//        System.out.println(matriz);
+//        matriz.remove(0);
+//        System.out.println(matriz);
+//        matriz.remove(matriz.size()-1);
+//        System.out.println(matriz);
 
+        matriz.remove(2,4);
         System.out.println(matriz);
-
-
-        matriz.add(2, 33);
-        matriz.add(0, 0);
-        matriz.add(matriz.size()-1, 99);
-        matriz.add(matriz.size(), 99);
-
-        System.out.println(matriz);
-
-        matriz.remove(3);
-        System.out.println(matriz);
-        matriz.remove(0);
-        System.out.println(matriz);
-        matriz.remove(matriz.size()-1);
-        System.out.println(matriz);
-
+//        matriz.remove(0, matriz.size()-1);
     }
 }
