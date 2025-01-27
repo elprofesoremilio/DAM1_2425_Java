@@ -1,5 +1,6 @@
 package _02_ClasesGenerales;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class C_ArrayList2 {
@@ -76,6 +77,7 @@ public class C_ArrayList2 {
     }
 
     public void remove(int beginIndex, int endIndex) {
+        // Hasta endIndex sin incluir
         int[] nuevosDatos = new int[size]; // _ _ _ _  ---> 1, 2 ---> _ _
         for (int i = 0; i < beginIndex; i++) {
             nuevosDatos[i] = data[i];
