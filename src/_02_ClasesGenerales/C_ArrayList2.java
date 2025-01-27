@@ -77,15 +77,19 @@ public class C_ArrayList2 {
     }
 
     public void remove(int beginIndex, int endIndex) {
-        // Hasta endIndex sin incluir
-        int[] nuevosDatos = new int[size]; // _ _ _ _  ---> 1, 2 ---> _ _
-        for (int i = 0; i < beginIndex; i++) {
-            nuevosDatos[i] = data[i];
+        if (beginIndex<0 || beginIndex>size || endIndex<0 || endIndex>size) {
+            throw new IndexOutOfBoundsException();
         }
-        for (int i = endIndex; i < nuevosDatos.length;i++){
-            nuevosDatos[i] = data[i];
+        if (beginIndex>endIndex) {
+            int aux = beginIndex;
+            beginIndex = endIndex;
+            endIndex = aux;
         }
-        data = nuevosDatos;
+        int tramo = endIndex - beginIndex;
+        for (int i = endIndex; i < size;i++){
+            data[i-tramo] = data[i];
+        }
+        size -= tramo;
     }
 
     @Override
@@ -111,7 +115,7 @@ public class C_ArrayList2 {
         C_ArrayList2 matriz = new C_ArrayList2(10);
         Random r = new Random();
         for (int i=0; i<7; i++) {
-            matriz.add(r.nextInt(11));
+            matriz.add(r.nextInt(10)+1);
         }
 
         System.out.println(matriz);
@@ -119,7 +123,7 @@ public class C_ArrayList2 {
         matriz.add(2, 33);
         System.out.println(matriz);
 
-        matriz.remove(2);
+        matriz.remove(3,3);
         System.out.println(matriz);
 
     }
