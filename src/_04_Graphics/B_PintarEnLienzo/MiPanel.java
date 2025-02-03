@@ -27,7 +27,6 @@ public class MiPanel extends JPanel {
         g2d.draw(new Ellipse2D.Double(0, 150, 70, 30));
 
 
-
         g2d.clearRect(20,20,75,75);
 
         // Coordenadas del pentágono
