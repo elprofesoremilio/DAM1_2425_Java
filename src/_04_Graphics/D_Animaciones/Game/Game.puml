@@ -1,0 +1,36 @@
+@startuml
+package motor {
+    Lienzo -u-|> JPanel
+    class Juego {
+        -ventana : JFrame
+        -lienzo : Lienzo
+
+        + add(Dibujable) : void
+        + iniciar() : void
+    }
+
+    interface Dibujable {
+        + actualizar() : void
+        + dibujar() : void
+    }
+
+    Lienzo --* Dibujable
+    Juego --* Lienzo
+
+
+    class Lienzo {
+        + objetos : LindedList<Dibujable>
+
+        + dibujar() : void
+        + actualizar() : void
+        + sincronizar() : void
+    }
+}
+class Jugador {
+    posicion : Point
+    velocidadX : int
+    color : Color
+}
+Jugador ..|> Dibujable
+
+@enduml
