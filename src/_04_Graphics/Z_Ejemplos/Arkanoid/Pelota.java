@@ -1,7 +1,7 @@
-package _04_Graphics.D_Animaciones.Arkanoid;
+package _04_Graphics.Z_Ejemplos.Arkanoid;
 
-import _04_Graphics.D_Animaciones.Game.Dibujable;
-import _04_Graphics.D_Animaciones.Game.Juego;
+import _04_Graphics.Utils.CutrEngine.Dibujable;
+import _04_Graphics.Utils.CutrEngine.Juego;
 
 import java.awt.*;
 
@@ -11,8 +11,10 @@ public class Pelota implements Dibujable {
     private Color color;
     private int velocidadX, velocidadY;
     private Juego juego = Config.JUEGO;
+    private Jugador jugador;
 
-    public Pelota(int x, int y, int radio, Color color) {
+    public Pelota(Jugador jugador, int x, int y, int radio, Color color) {
+        this.jugador = jugador;
         this.x = x;
         this.y = y;
         this.radio = radio;

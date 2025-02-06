@@ -1,0 +1,40 @@
+@startuml
+
+class Arkanoid {
+    juego : Juego
+}
+
+class Ladrillo {
+    x : int
+    y : int
+    ancho : int
+    alto : int
+    color : int
+    activo : boolean
+}
+
+class Jugador {
+    x : int
+    y : int
+    ancho : int
+    alto : int
+    velocidad : int
+    color : Color
+}
+
+class Pelota {
+    x : int
+    y : int
+    radio : int
+    color : Color
+}
+
+Pelota ..|> Dibujable
+Jugador ..|> Dibujable
+Ladrillo ..|> Dibujable
+Arkanoid "1" --* "1" Jugador
+Arkanoid "1" --* "1" Pelota
+Arkanoid "1" --* "n" Ladrillo
+Jugador ..> Pelota
+Ladrillo ..> Pelota
+@enduml

@@ -1,4 +1,4 @@
-package _04_Graphics.D_Animaciones.Game;
+package _04_Graphics.Utils.CutrEngine;
 
 import javax.swing.*;
 import java.awt.*;

@@ -7,6 +7,8 @@ package motor {
 
         + add(Dibujable) : void
         + iniciar() : void
+        + getWidth() : int
+        + getHeight() : int
     }
 
     interface Dibujable {

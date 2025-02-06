@@ -1,6 +1,6 @@
-package _04_Graphics.D_Animaciones.Arkanoid;
+package _04_Graphics.Z_Ejemplos.Arkanoid;
 
-import _04_Graphics.D_Animaciones.Game.Juego;
+import _04_Graphics.Utils.CutrEngine.Juego;
 
 import java.awt.*;
 
@@ -11,4 +11,8 @@ public class Config {
     public static int ANCHO_PANTALLA = 600;
     public static int ALTO_PANTALLA = 350;
     public static Juego JUEGO;
+
+    public static int posicionarMedio(int distancia, int longitud) {
+        return distancia/2 - longitud/2;
+    }
 }
