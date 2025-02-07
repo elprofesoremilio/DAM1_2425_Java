@@ -5,18 +5,17 @@ import _04_Graphics.Utils.CutrEngine.Juego;
 
 import java.awt.*;
 
-public class Pelota implements Dibujable {
-    private int x, y;
+public class Pelota extends Dibujable {
     private int radio;
-    private Color color;
-    private int velocidadX, velocidadY;
+    private Point centro;
     private Juego juego = Config.JUEGO;
     private Jugador jugador;
 
     public Pelota(Jugador jugador, int x, int y, int radio, Color color) {
+        // Nene, si dibujas un óvalo no multipliques por 2
+        super(x-radio, y-radio, radio, radio);
         this.jugador = jugador;
-        this.x = x;
-        this.y = y;
+        this.centro = new Point(x, y);
         this.radio = radio;
         this.color = color;
         velocidadX = Config.VELOCIDAD_PELOTA;
@@ -24,21 +23,42 @@ public class Pelota implements Dibujable {
     }
 
     @Override
+    protected void recalcularHitbox() {
+        this.x = centro.x;
+        this.y = centro.y;
+        super.recalcularHitbox();
+    }
+
+    @Override
     public void dibujar(Graphics g) {
+        this.dibujaHitBox(g);
         g.setColor(color);
-        g.fillOval(x, y, radio, radio);
+        g.fillOval(centro.x, centro.y, radio, radio);
     }
 
     @Override
     public void actualizar() {
-        if (y + velocidadY > juego.getHeight() - radio || y + velocidadY < 0) {
+
+        if (centro.y + velocidadY > juego.getHeight() - radio || centro.y + velocidadY < 0) {
             velocidadY = -velocidadY;
         }
-        if (x + velocidadX > juego.getWidth() - radio || x + velocidadX < 0) {
+        if (centro.x + velocidadX > juego.getWidth() - radio || centro.x + velocidadX < 0) {
             velocidadX = -velocidadX;
         }
 
-        y += velocidadY;
-        x += velocidadX;
+        if (this.colisiona(jugador)) {
+            velocidadY = -velocidadY;
+        }
+
+//        if (x + radio>jugador.getX() && x < jugador.getX()+jugador.getAncho()) {
+//            if (y + radio>jugador.getY() && y < jugador.getY() + jugador.getAlto()) {
+//                velocidadY = -velocidadY;
+//            }
+//        }
+
+        centro.y += velocidadY;
+        centro.x += velocidadX;
+        recalcularHitbox();
+
     }
 }
