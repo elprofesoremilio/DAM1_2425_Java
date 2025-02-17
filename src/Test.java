@@ -1,28 +1,26 @@
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.time.ZoneId;
+import java.util.Random;
 
 public class Test {
     public static void main(String[] args) {
-        // Fecha actual
-        LocalDate hoy = LocalDate.now();
-        System.out.println("Fecha actual: " + hoy);
+        int[] numeros = new int[20];
+        Random random = new Random();
 
-        // Crear una fecha específica
-        LocalDate nacimiento = LocalDate.of(2005, 2, 12);
-        System.out.println("Fecha de nacimiento: " + nacimiento);
-
-        // Sumar días a una fecha
-        LocalDate mañana = hoy.plusDays(1);
-        System.out.println("Mañana será: " + mañana);
-
-        // Comparar fechas
-        if (hoy.isBefore(mañana)) {
-            System.out.println("Hoy es antes del " + mañana);
+        // Primero rellenamos el array con números aleatorios entre 1 y 100
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = random.nextInt(100) + 1;
         }
 
-        // Crear una fecha a partir de una cadena de texto (String)
-        LocalDate otraFecha = LocalDate.parse("2024-01-15");
-        System.out.println("Otra fecha: " + otraFecha);
+        // Ahora asumimos que el primero es el máximo
+        int maximo = numeros[0];
+        // Comprobamos si estamos en lo cierto comprobando los demás
+        for (int i = 1; i < numeros.length; i++) {
+            // Si encontramos una contradicción, un número mayor, asumimos que ese es el máximo
+            if (numeros[i]>maximo) {
+                maximo = numeros[i];
+            }
+        }
+
+        System.out.printf("El máximo del array es %d", maximo);
+
     }
 }
