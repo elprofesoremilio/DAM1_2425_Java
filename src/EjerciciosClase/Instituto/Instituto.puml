@@ -1,0 +1,31 @@
+@startuml
+class Instituto {
+    - nombre : String
+    - matriculas : List<>
+    - estudiantes : List<>
+    + add(Estudiante)
+    + add(Matricula)
+    + toString() : String
+    + equals() : boolean
+}
+class Matricula {
+    - id : int
+    - fecha : LocalDate
+    - estudiante : Estudiante
+    + toString() : String
+    + equals() : boolean
+}
+class Estudiante {
+    - matricula : Matricula
+    - nombre : String
+    - fechaNacimiento : LocalDate
+    + toString() : String
+    + equals() : boolean
+
+}
+
+Instituto "1" --* "n" Matricula
+Instituto "1" --o "n" Estudiante
+Matricula "1" -- "1" Estudiante
+
+@enduml

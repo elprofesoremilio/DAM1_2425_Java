@@ -11,7 +11,7 @@ public class EdadInvalidaException extends Exception {
 
     public EdadInvalidaException(int error) {
         super(
-            error < 0 ? "No se permiten edades negativas" : "Edades mayores que 130 no me las creo"
+                error < 0 ? "No se permiten edades negativas" : "Edades mayores que 130 no me las creo"
         );
     }
 }
