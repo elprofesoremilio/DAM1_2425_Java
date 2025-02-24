@@ -1,0 +1,31 @@
+@startuml
+class BuscaminasConsola {
+    -tablero : Tablero
+
+    +destapar() : boolean
+    +mostrarResultado() : void
+    +terminarJuego() : void
+}
+
+class Tablero {
+    -celdas : Celda[][]
+
+    +destapar(fila : int, columna : int) : boolean
+    +calcularResultado() : void
+    +getMinasAlrededor(fila : int, columna : int)
+}
+
+class Celda {
+    -mina : boolean
+    -minasAlrededor : byte
+    -destapada : boolean
+
+    +destapar() : boolean
+    +getMinasAlrededor() : byte
+    +setMinasAlrededor() : void
+}
+
+Tablero "1" *-- "n" Celda
+BuscaminasConsola "1" *-- "1" Tablero
+
+@enduml
