@@ -3,13 +3,14 @@ class BuscaminasConsola {
     -tablero : Tablero
 
     +destapar() : boolean
-    +mostrarResultado() : void
+    +mostrarTablero() : void
     +terminarJuego() : void
 }
 
 class Tablero {
     -celdas : Celda[][]
 
+    +crearTablero() : void
     +destapar(fila : int, columna : int) : boolean
     +calcularResultado() : void
     +getMinasAlrededor(fila : int, columna : int)
@@ -23,6 +24,8 @@ class Celda {
     +destapar() : boolean
     +getMinasAlrededor() : byte
     +setMinasAlrededor() : void
+    +isMina() : boolean
+    +colocarMina() : void
 }
 
 Tablero "1" *-- "n" Celda
