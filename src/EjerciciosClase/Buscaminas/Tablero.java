@@ -1,12 +1,25 @@
 package EjerciciosClase.Buscaminas;
 
+import java.awt.*;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Tablero {
     Celda[][] celdas;
+    Set<Point> coordenadas;
 
     public Tablero() {
+        coordenadas = new HashSet<>();
+        coordenadas.add(new Point(-1,-1));
+        coordenadas.add(new Point(-1,0));
+        coordenadas.add(new Point(-1,1));
+        coordenadas.add(new Point(0,-1));
+        coordenadas.add(new Point(0,1));
+        coordenadas.add(new Point(1,-1));
+        coordenadas.add(new Point(1,0));
+        coordenadas.add(new Point(1,1));
     }
 
     public void crearTablero() {
@@ -15,7 +28,7 @@ public class Tablero {
         int totalMinas = 10;
 
         for (int row = 0; row < celdas.length; row++) {
-            for (int col = 0; col < celdas.length; col++) {
+            for (int col = 0; col < celdas[row].length; col++) {
                 celdas[row][col] = new Celda();
             }
         }
@@ -30,6 +43,27 @@ public class Tablero {
                 celdas[row][col].colocarMina();
             }
         }
+
+        for (int row = 0; row < celdas.length; row++) {
+            for (int col = 0; col < celdas[row].length; col++) {
+                celdas[row][col].setMinasAlrededor(calcularMinasAlrededor(row,col));
+            }
+        }
+    }
+
+    private byte calcularMinasAlrededor(int row, int col) {
+        byte result=0;
+        for (Point p : coordenadas) {
+            int newRow = row-p.x, newCol = col-p.y;
+            // Primero compruebo que las coordenadas son correctas
+            if (newRow>=0 && newRow<celdas.length && newCol>=0 && newCol<celdas[row].length) {
+                // Si son correctas miro si hay mina
+                if (celdas[newRow][newCol].isMina()) {
+                    result++;
+                }
+            }
+        }
+        return result;
     }
 
     @Override

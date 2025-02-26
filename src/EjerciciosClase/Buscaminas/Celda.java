@@ -34,10 +34,14 @@ public class Celda {
 
     @Override
     public String toString() {
-        if (mina) {
-            return "*";
+        if (!destapada) {
+            return Character.toString('\u2395');
         } else {
-            return Byte.toString(minasAlrededor);
+            if (mina) {
+                return "*";
+            } else {
+                return Byte.toString(minasAlrededor);
+            }
         }
     }
 
