@@ -53,4 +53,7 @@ public class Celda {
         System.out.println(celda.destapada);
     }
 
+    public boolean isDestapada() {
+        return destapada;
+    }
 }
