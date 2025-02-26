@@ -12,7 +12,7 @@ class Tablero {
 
     +crearTablero() : void
     +destapar(fila : int, columna : int) : boolean
-    +calcularResultado() : void
+    +calcularResultado() : boolean
     +getMinasAlrededor(fila : int, columna : int)
 }
 

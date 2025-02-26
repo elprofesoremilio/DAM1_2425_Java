@@ -75,8 +75,14 @@ public class Tablero {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (Celda[] fila : celdas) {
-            result.append(Arrays.toString(fila)).append("\n");
+        result.append("  ");
+        for (int i = 0; i < ancho; i++) {
+            result.append(" ").append(i).append(" ");
+        }
+        result.append("\n");
+        for (int row=0; row<alto; row++) {
+            result.append(row).append(" ")
+                    .append(Arrays.toString(celdas[row])).append("\n");
         }
         return result.toString();
     }
