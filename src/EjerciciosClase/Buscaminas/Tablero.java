@@ -95,7 +95,7 @@ public class Tablero {
     private byte calcularMinasAlrededor(int row, int col) {
         byte result=0;
         for (Point p : coordenadas) {
-            int newRow = row-p.x, newCol = col-p.y;
+            int newRow = row+p.x, newCol = col+p.y;
             // Primero compruebo que las coordenadas son correctas
             if (newRow>=0 && newRow<rows && newCol>=0 && newCol<columns) {
                 // Si son correctas miro si hay mina
@@ -133,7 +133,7 @@ public class Tablero {
             return true;
         } else if (celda.getMinasAlrededor()==0){
             for (Point p : coordenadas) {
-                int newRow = row - p.x, newCol = col - p.y;
+                int newRow = row + p.x, newCol = col + p.y;
                 // Primero compruebo que las coordenadas son correctas
                 // TODO: isCoordenadasOK(row, col) que lance FueraDeTableroException y aquí capturar excepción
                 if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < columns) {
