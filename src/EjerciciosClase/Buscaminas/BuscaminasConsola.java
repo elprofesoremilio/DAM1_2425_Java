@@ -22,6 +22,10 @@ public class BuscaminasConsola {
         return tablero.destapar(row,col);
     }
 
+    public boolean calcularResultado() {
+        return tablero.calcularResultado();
+    }
+
     public static void main(String[] args) {
         BuscaminasConsola buscaminas = new BuscaminasConsola();
         buscaminas.mostrarTablero();
@@ -31,5 +35,11 @@ public class BuscaminasConsola {
             juegoTerminado = buscaminas.destapar();
         }
         buscaminas.mostrarTablero();
+        if (buscaminas.calcularResultado()) {
+            System.out.println("¡HAS GANADO!");
+        } else {
+            System.out.println("Has perdido :(");
+        }
+
     }
 }

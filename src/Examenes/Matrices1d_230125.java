@@ -21,7 +21,6 @@ public class Matrices1d_230125 {
                 datos[i] *= -2;
             }
         }
-
         System.out.println(Arrays.toString(datos));
 
         System.out.print("[ ");

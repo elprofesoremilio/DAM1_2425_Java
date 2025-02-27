@@ -7,11 +7,13 @@ import java.util.Random;
 import java.util.Set;
 
 public class Tablero {
-    Celda[][] celdas;
-    Set<Point> coordenadas;
-    int casillasDestapadas = 0;
-    int numeroMinas;
-    int alto, ancho;
+    private Celda[][] celdas;
+    private Set<Point> coordenadas;
+    private int casillasDestapadas = 0;
+    private int numeroMinas;
+    private int alto, ancho;
+    private boolean minaExplotada;
+
 
     public Tablero() {
         coordenadas = new HashSet<>();
@@ -19,6 +21,7 @@ public class Tablero {
         numeroMinas = 10;
         alto = 8;
         ancho = 8;
+        minaExplotada = false;
         coordenadas.add(new Point(-1,-1));
         coordenadas.add(new Point(-1,0));
         coordenadas.add(new Point(-1,1));
@@ -91,6 +94,7 @@ public class Tablero {
         Celda celda = celdas[row][col];
         casillasDestapadas++;
         if (celda.destapar()) {
+            minaExplotada = true;
             return true;
         } else if (celda.getMinasAlrededor()==0){
             for (Point p : coordenadas) {
@@ -105,6 +109,10 @@ public class Tablero {
             }
         }
         return casillasDestapadas==(ancho*alto-numeroMinas);
+    }
+
+    public boolean calcularResultado() {
+        return (!minaExplotada) && casillasDestapadas==(ancho*alto-numeroMinas);
     }
 
 }
