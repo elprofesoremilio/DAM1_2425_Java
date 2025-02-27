@@ -8,8 +8,6 @@ public class BuscaminasConsola {
     Scanner sc;
 
     public BuscaminasConsola() {
-        tablero = new Tablero();
-        tablero.crearTablero();
         sc = new Scanner(System.in);
     }
 
@@ -28,6 +26,7 @@ public class BuscaminasConsola {
     }
 
     public void iniciarPartida() {
+        elegirDificultad();
         mostrarTablero();
         boolean juegoTerminado = destapar();
         while (!juegoTerminado) {
@@ -42,6 +41,23 @@ public class BuscaminasConsola {
             tablero.destaparMinas();
             mostrarTablero();
         }
+    }
+
+
+    private void elegirDificultad() {
+        System.out.println("Elija la dificultad: \n" +
+                "1. Fácil\n" +
+                "2. Media\n" +
+                "3. Difícil\n" +
+                "4. Para expertos\n" +
+                "0. Terminar\n");
+        int dificultad = sc.nextInt();
+        if (dificultad==0) {
+            System.out.println("Salir del juego");
+            System.exit(0);
+        }
+        tablero = new Tablero(dificultad);
+        tablero.crearTablero();
     }
 
 }
