@@ -45,14 +45,6 @@ public class Celda {
         }
     }
 
-    public static void main(String[] args) {
-        Celda celda = new Celda();
-        celda.colocarMina();
-        System.out.println(celda);
-        celda.destapar();
-        System.out.println(celda.destapada);
-    }
-
     public boolean isDestapada() {
         return destapada;
     }

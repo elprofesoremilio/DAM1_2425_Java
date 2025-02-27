@@ -15,7 +15,7 @@ public class Tablero {
     private boolean minaExplotada;
 
 
-    public Tablero() {
+    public Tablero(/*dificultad*/) {
         coordenadas = new HashSet<>();
         // TODO - hacer que sea configurable el tamaño
         numeroMinas = 10;
@@ -92,6 +92,9 @@ public class Tablero {
 
     public boolean destapar(int row, int col) {
         Celda celda = celdas[row][col];
+        if (celda.isDestapada()) {
+            return false;
+        }
         casillasDestapadas++;
         if (celda.destapar()) {
             minaExplotada = true;
@@ -111,8 +114,18 @@ public class Tablero {
         return casillasDestapadas==(ancho*alto-numeroMinas);
     }
 
+    public void destaparMinas() {
+        for (Celda[] fila : celdas) {
+            for (Celda celda : fila) {
+                if (celda.isMina()) {
+                    celda.destapar();
+                }
+            }
+        }
+    }
+
     public boolean calcularResultado() {
-        return (!minaExplotada) && casillasDestapadas==(ancho*alto-numeroMinas);
+        return (!minaExplotada) && casillasDestapadas==((ancho*alto)-numeroMinas);
     }
 
 }

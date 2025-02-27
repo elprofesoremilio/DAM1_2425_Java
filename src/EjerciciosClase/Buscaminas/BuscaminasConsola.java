@@ -2,6 +2,7 @@ package EjerciciosClase.Buscaminas;
 
 import java.util.Scanner;
 
+// TODO: hacer que buscaminasConsola no sea la vista sino otro controlador
 public class BuscaminasConsola {
     private Tablero tablero;
     Scanner sc;
@@ -12,34 +13,35 @@ public class BuscaminasConsola {
         sc = new Scanner(System.in);
     }
 
-    public void mostrarTablero() {
+    private void mostrarTablero() {
         System.out.println(tablero);
     }
 
-    public boolean destapar() {
+    private boolean destapar() {
         System.out.println("Introduzca las coordenadas para destapar celda: ");
         int row = sc.nextInt(), col = sc.nextInt();
         return tablero.destapar(row,col);
     }
 
-    public boolean calcularResultado() {
+    private boolean calcularResultado() {
         return tablero.calcularResultado();
     }
 
-    public static void main(String[] args) {
-        BuscaminasConsola buscaminas = new BuscaminasConsola();
-        buscaminas.mostrarTablero();
-        boolean juegoTerminado = buscaminas.destapar();
+    public void iniciarPartida() {
+        mostrarTablero();
+        boolean juegoTerminado = destapar();
         while (!juegoTerminado) {
-            buscaminas.mostrarTablero();
-            juegoTerminado = buscaminas.destapar();
+            mostrarTablero();
+            juegoTerminado = destapar();
         }
-        buscaminas.mostrarTablero();
-        if (buscaminas.calcularResultado()) {
+        if (calcularResultado()) {
+            mostrarTablero();
             System.out.println("¡HAS GANADO!");
         } else {
             System.out.println("Has perdido :(");
+            tablero.destaparMinas();
+            mostrarTablero();
         }
-
     }
+
 }

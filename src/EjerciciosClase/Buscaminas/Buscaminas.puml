@@ -2,18 +2,27 @@
 class BuscaminasConsola {
     -tablero : Tablero
 
-    +destapar() : boolean
-    +mostrarTablero() : void
-    +terminarJuego() : void
+    +BuscaminasConsola()
+    -destapar() : boolean
+    -mostrarTablero() : void
+    -calcularResultado() : boolean
+    +iniciarPartida() : void
 }
 
 class Tablero {
     -celdas : Celda[][]
+    -coordenadasAlrededor : Set<Point>
+    -ancho : int
+    -alto : int
+    -numeroMinas : int
+    -minaExplotada : boolean
 
+    +Tablero()
     +crearTablero() : void
     +destapar(fila : int, columna : int) : boolean
     +calcularResultado() : boolean
-    +getMinasAlrededor(fila : int, columna : int)
+    -calcularMinasAlrededor(fila : int, columna : int)
+    +toString() : String
 }
 
 class Celda {
@@ -21,11 +30,14 @@ class Celda {
     -minasAlrededor : byte
     -destapada : boolean
 
+    +Celda()
     +destapar() : boolean
     +getMinasAlrededor() : byte
     +setMinasAlrededor() : void
     +isMina() : boolean
     +colocarMina() : void
+    +isDestapada() : boolean
+    +toString() : String
 }
 
 Tablero "1" *-- "n" Celda
