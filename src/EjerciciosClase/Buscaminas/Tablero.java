@@ -15,17 +15,18 @@ public class Tablero {
 
     // Atributos
     private Celda[][] celdas;
-    private Set<Point> coordenadas;
+    private Set<Point> coordenadasAlrededor;
     private int casillasDestapadas = 0;
     private int numeroMinas;
-    private int rows, columns;
+    private int rows;
+    private int columns;
     private boolean minaExplotada;
 
 
     // Añado un parámetro que nos de la dificultad
     // Lo pongo entero para tomar su valor de unas constantes
     public Tablero(int dificultad) {
-        coordenadas = new HashSet<>();
+        coordenadasAlrededor = new HashSet<>();
 
         // En funcion de la dificultad generamos minas y celdas
         switch (dificultad) {
@@ -53,14 +54,14 @@ public class Tablero {
         }
 
         minaExplotada = false;
-        coordenadas.add(new Point(-1,-1));
-        coordenadas.add(new Point(-1,0));
-        coordenadas.add(new Point(-1,1));
-        coordenadas.add(new Point(0,-1));
-        coordenadas.add(new Point(0,1));
-        coordenadas.add(new Point(1,-1));
-        coordenadas.add(new Point(1,0));
-        coordenadas.add(new Point(1,1));
+        coordenadasAlrededor.add(new Point(-1,-1));
+        coordenadasAlrededor.add(new Point(-1,0));
+        coordenadasAlrededor.add(new Point(-1,1));
+        coordenadasAlrededor.add(new Point(0,-1));
+        coordenadasAlrededor.add(new Point(0,1));
+        coordenadasAlrededor.add(new Point(1,-1));
+        coordenadasAlrededor.add(new Point(1,0));
+        coordenadasAlrededor.add(new Point(1,1));
     }
 
     public void crearTablero() {
@@ -94,7 +95,7 @@ public class Tablero {
 
     private byte calcularMinasAlrededor(int row, int col) {
         byte result=0;
-        for (Point p : coordenadas) {
+        for (Point p : coordenadasAlrededor) {
             int newRow = row+p.x, newCol = col+p.y;
             // Primero compruebo que las coordenadas son correctas
             if (newRow>=0 && newRow<rows && newCol>=0 && newCol<columns) {
@@ -122,6 +123,12 @@ public class Tablero {
         return result.toString();
     }
 
+    /**
+     *
+     * @param row
+     * @param col
+     * @return true si se destapa una mina
+     */
     public boolean destapar(int row, int col) {
         Celda celda = celdas[row][col];
         if (celda.isDestapada()) {
@@ -132,7 +139,7 @@ public class Tablero {
             minaExplotada = true;
             return true;
         } else if (celda.getMinasAlrededor()==0){
-            for (Point p : coordenadas) {
+            for (Point p : coordenadasAlrededor) {
                 int newRow = row + p.x, newCol = col + p.y;
                 // Primero compruebo que las coordenadas son correctas
                 // TODO: isCoordenadasOK(row, col) que lance FueraDeTableroException y aquí capturar excepción
@@ -161,4 +168,19 @@ public class Tablero {
         return (!minaExplotada) && casillasDestapadas==((columns * rows)-numeroMinas);
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public String getInfoMina(int fila, int columna) {
+        return celdas[fila][columna].toString();
+    }
+
+    public boolean isDestapada(int row, int column) {
+        return celdas[row][column].isDestapada();
+    }
 }

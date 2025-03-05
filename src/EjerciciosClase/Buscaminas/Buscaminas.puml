@@ -6,23 +6,31 @@ class BuscaminasConsola {
     -destapar() : boolean
     -mostrarTablero() : void
     -calcularResultado() : boolean
+    -elegirDificultad() : void
     +iniciarPartida() : void
 }
 
 class Tablero {
+    + {static} DIFICULTAD_FACIL : int
+    + {static} DIFICULTAD_MEDIA : int
+    + {static} DIFICULTAD_DIFICIL : int
+    + {static} DIFICULTAD_EXPERTO : int
+    ---
     -celdas : Celda[][]
     -coordenadasAlrededor : Set<Point>
-    -ancho : int
-    -alto : int
+    -casillasDestapadas : int
+    -rows : int
+    -columns : int
     -numeroMinas : int
     -minaExplotada : boolean
-
+    ---
     +Tablero()
     +crearTablero() : void
     +destapar(fila : int, columna : int) : boolean
     +calcularResultado() : boolean
     -calcularMinasAlrededor(fila : int, columna : int)
     +toString() : String
+    +destaparMinas() : void
 }
 
 class Celda {
