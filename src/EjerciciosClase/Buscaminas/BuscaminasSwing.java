@@ -43,6 +43,9 @@ public class BuscaminasSwing extends JFrame {
     public void destapar(int fila, int columna) {
         if (tablero.destapar(fila, columna)) {
             tablaCeldas[fila][columna].setText("*");
+            tablero.destaparMinas();
+            actualizarVista();
+            JOptionPane.showMessageDialog(this, "Has perdido");
         } else {
             String result = tablero.getInfoMina(fila,columna);
             tablaCeldas[fila][columna].setText(result);
