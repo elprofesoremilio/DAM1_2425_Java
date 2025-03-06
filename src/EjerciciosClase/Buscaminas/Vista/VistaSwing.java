@@ -1,15 +1,18 @@
-package EjerciciosClase.Buscaminas;
+package EjerciciosClase.Buscaminas.Vista;
+
+import EjerciciosClase.Buscaminas.Controlador.Buscaminas;
+import EjerciciosClase.Buscaminas.Modelo.Tablero;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class BuscaminasSwing extends JFrame {
-    private Tablero tablero;
+public class VistaSwing extends JFrame {
     private CeldaBoton[][] tablaCeldas;
+    private Buscaminas buscaminas;
     private int rows;
     private int columns;
 
-    public BuscaminasSwing() {
+    public VistaSwing() {
         super("Buscaminas");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(370,300);
@@ -19,13 +22,12 @@ public class BuscaminasSwing extends JFrame {
     }
 
     public void iniciarTablero() {
-        tablero = new Tablero(Tablero.DIFICULTAD_FACIL);
-        tablero.crearTablero();
+        buscaminas = new Buscaminas(Tablero.DIFICULTAD_FACIL);
         JPanel tableroPanel = new JPanel();
         this.setContentPane(tableroPanel);
         // Para que las celdas aparezcan en una tabla
-        rows = tablero.getRows();
-        columns = tablero.getColumns();
+        rows = buscaminas.getRows();
+        columns = buscaminas.getColumns();
         tableroPanel.setLayout(new GridLayout(rows,columns));
         tablaCeldas = new CeldaBoton[rows][columns];
         for (int row = 0; row < rows; row++) {
@@ -36,31 +38,41 @@ public class BuscaminasSwing extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        new BuscaminasSwing();
-    }
 
-    public void destapar(int fila, int columna) {
-        if (tablero.destapar(fila, columna)) {
-            tablaCeldas[fila][columna].setText("*");
-            tablero.destaparMinas();
+    public void destapar(int row, int column) {
+        if (buscaminas.destapar(row, column)) {
+            tablaCeldas[row][column].setText("*");
+            buscaminas.destaparMinas();
             actualizarVista();
             JOptionPane.showMessageDialog(this, "Has perdido");
         } else {
-            String result = tablero.getInfoMina(fila,columna);
-            tablaCeldas[fila][columna].setText(result);
-            if (result.equals("0")) {
+            if (actualizarVista(row,column)) {
                 actualizarVista();
             }
+
         }
+    }
+
+    private boolean actualizarVista(int row, int column) {
+        if (buscaminas.isDestapada(row, column)) {
+            if (buscaminas.isMina(row, column)) {
+                tablaCeldas[row][column].setText("*");
+            } else {
+                int minasAlrededor = buscaminas.getMinasAlrededor(row, column);
+                tablaCeldas[row][column].setText(
+                        String.valueOf(minasAlrededor)
+                );
+                return minasAlrededor == 0;
+            }
+        }
+        return false;
     }
 
     private void actualizarVista() {
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
-                if (tablero.isDestapada(row, column)) {
-                    String result = tablero.getInfoMina(row,column);
-                    tablaCeldas[row][column].setText(result);
+                if (buscaminas.isDestapada(row, column)) {
+                    actualizarVista(row, column);
                 }
             }
         }

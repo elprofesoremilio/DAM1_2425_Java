@@ -1,4 +1,4 @@
-package EjerciciosClase.Buscaminas;
+package EjerciciosClase.Buscaminas.Modelo;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -108,21 +108,6 @@ public class Tablero {
         return result;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("   ");
-        for (int i = 0; i < columns; i++) {
-            result.append((i<10?" ":"")).append(i).append(" ");
-        }
-        result.append("\n");
-        for (int row = 0; row< rows; row++) {
-            result.append(row).append(row<10?"  ":" ")
-                    .append(Arrays.toString(celdas[row])).append("\n");
-        }
-        return result.toString();
-    }
-
     /**
      *
      * @param row
@@ -182,5 +167,13 @@ public class Tablero {
 
     public boolean isDestapada(int row, int column) {
         return celdas[row][column].isDestapada();
+    }
+
+    public boolean isMina(int row, int column) {
+        return celdas[row][column].isMina();
+    }
+
+    public int getMinasAlrededor(int row, int column) {
+        return celdas[row][column].getMinasAlrededor();
     }
 }

@@ -1,4 +1,4 @@
-package EjerciciosClase.Buscaminas;
+package EjerciciosClase.Buscaminas.Vista;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 public class CeldaBoton extends JButton implements ActionListener {
     private final int fila;
     private final int columna;
-    private final BuscaminasSwing vista;
+    private final VistaSwing vista;
 
-    public CeldaBoton(BuscaminasSwing vista, int fila, int columna) {
+    public CeldaBoton(VistaSwing vista, int fila, int columna) {
         super(" ");
         this.fila = fila;
         this.columna = columna;

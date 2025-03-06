@@ -1,4 +1,4 @@
-package EjerciciosClase.Buscaminas;
+package EjerciciosClase.Buscaminas.Modelo;
 
 public class Celda {
     private boolean mina;
@@ -30,19 +30,6 @@ public class Celda {
 
     public void colocarMina() {
         mina = true;
-    }
-
-    @Override
-    public String toString() {
-        if (!destapada) {
-            return Character.toString('\u2395');
-        } else {
-            if (mina) {
-                return "*";
-            } else {
-                return Byte.toString(minasAlrededor);
-            }
-        }
     }
 
     public boolean isDestapada() {

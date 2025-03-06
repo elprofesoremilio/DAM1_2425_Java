@@ -1,8 +1,10 @@
 @startuml
 class BuscaminasConsola {
-    -tablero : Tablero
+    -buscaminas : Buscaminas
+    -scanner : Scanner
 
     +BuscaminasConsola()
+    -convertirFilaAString(fila : int) : String
     -destapar() : boolean
     -mostrarTablero() : void
     -calcularResultado() : boolean
@@ -10,45 +12,62 @@ class BuscaminasConsola {
     +iniciarPartida() : void
 }
 
-class Tablero {
-    + {static} DIFICULTAD_FACIL : int
-    + {static} DIFICULTAD_MEDIA : int
-    + {static} DIFICULTAD_DIFICIL : int
-    + {static} DIFICULTAD_EXPERTO : int
-    ---
-    -celdas : Celda[][]
-    -coordenadasAlrededor : Set<Point>
-    -casillasDestapadas : int
-    -rows : int
-    -columns : int
-    -numeroMinas : int
-    -minaExplotada : boolean
-    ---
-    +Tablero()
-    +crearTablero() : void
-    +destapar(fila : int, columna : int) : boolean
-    +calcularResultado() : boolean
-    -calcularMinasAlrededor(fila : int, columna : int)
-    +toString() : String
-    +destaparMinas() : void
+package Controlador {
+    class Buscaminas {
+        -Tablero tablero;
+        +getColumns() : int
+        +getRows() : int
+        +isDestapada(fila : int, columna : int) : boolean
+        +isMina(fila : int, columna : int) : boolean
+        +getMinasAlrededor(fila : int, columna : int) : byte
+        +calcularResultado() : boolean
+        +destaparMinas() : boolean
+    }
 }
 
-class Celda {
-    -mina : boolean
-    -minasAlrededor : byte
-    -destapada : boolean
+package Modelo {
+    class Tablero {
+        + {static} DIFICULTAD_FACIL : int
+        + {static} DIFICULTAD_MEDIA : int
+        + {static} DIFICULTAD_DIFICIL : int
+        + {static} DIFICULTAD_EXPERTO : int
+        ---
+        -celdas : Celda[][]
+        -coordenadasAlrededor : Set<Point>
+        -casillasDestapadas : int
+        -rows : int
+        -columns : int
+        -numeroMinas : int
+        -minaExplotada : boolean
+        ---
+        +Tablero()
+        +crearTablero() : void
+        +destapar(fila : int, columna : int) : boolean
+        +calcularResultado() : boolean
+        -calcularMinasAlrededor(fila : int, columna : int)
+        +destaparMinas() : void
+        +getRows() : void
+        +getColumns() : void
+        +isDestapada(fila : int, columna : int) : boolean
+        +isMina(fila : int, columna : int) : boolean
+        +getMinasAlrededor(fila : int, columna : int) : byte
+    }
 
-    +Celda()
-    +destapar() : boolean
-    +getMinasAlrededor() : byte
-    +setMinasAlrededor() : void
-    +isMina() : boolean
-    +colocarMina() : void
-    +isDestapada() : boolean
-    +toString() : String
+    class Celda {
+        -mina : boolean
+        -minasAlrededor : byte
+        -destapada : boolean
+
+        +Celda()
+        +destapar() : boolean
+        +getMinasAlrededor() : byte
+        +setMinasAlrededor() : void
+        +isMina() : boolean
+        +colocarMina() : void
+        +isDestapada() : boolean
+    }
 }
-
 Tablero "1" *-- "n" Celda
-BuscaminasConsola "1" *-- "1" Tablero
-
+BuscaminasConsola "1" *-- "1" Buscaminas
+Buscaminas "1" *-- "1" Tablero
 @enduml
