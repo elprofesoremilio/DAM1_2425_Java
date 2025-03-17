@@ -109,7 +109,6 @@ public class Tablero {
     }
 
     /**
-     *
      * @param row
      * @param col
      * @return true si se destapa una mina

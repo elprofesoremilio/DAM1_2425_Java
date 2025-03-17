@@ -1,0 +1,21 @@
+@startuml
+Mesa "1" *-- "*" Carta
+JuegoParejas *-- Mesa
+ConsolaParejas *-- JuegoParejas
+
+class Carta {
+    -tipo : char
+    -destapada : boolean
+
+}
+
+class Mesa {
+    -cartas : List<Carta>
+}
+
+class JuegoParejas {
+}
+
+class ConsolaParejas {
+}
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+' a quién pertenece un dispositivo
+' tiempo estimado de reparación
+' dispositivos por reparar
+' qué necesito para reparar un dispositivo
+
+class Cliente {
+    -nombre : String
+}
+class Dispositivo {
+}
+
+class ReparacionTipo {
+    -nombre : String
+    -tiempoEstimado : Period
+    -precioEstimado : BigDecimal
+}
+
+class Reparacion {
+    -fechaEntrada : Instant
+    -fechaSalida : Instant
+    -precioReal : BigDecimal
+
+}
+
+class Componente {
+    -stock : int
+}
+
+class Compatibilidad {
+    -modelos : List<Modelo>
+}
+
+enum Estado {
+    REPARADO
+    EN_PROCESO
+    RECIBIDO
+    ENTREGADO
+    ROTO
+}
+Cliente "1" -r- "0..*" Dispositivo : tiene
+Dispositivo "1" -- "*" Reparacion : requiere
+Reparacion "*" -- "*" Componente : requiere
+Reparacion -u- Estado : se encuentra en
+Reparacion -l- ReparacionTipo
+Dispositivo "*" -- "1" Modelo : pertenece
+Compatibilidad "1" -u- "*" Modelo : pertenece
+Modelo "*" -u- "1" Marca : es de
+Componente "*" -l- "1" Compatibilidad : pertenece
+Bateria -u-|> Componente
+Pantalla -u-|> Componente
+@enduml

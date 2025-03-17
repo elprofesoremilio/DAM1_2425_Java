@@ -1,0 +1,34 @@
+@startuml
+class Cliente {
+  +ID: int
+  +Nombre: String
+  +Direccion: String
+  +Telefono: String
+}
+
+class Dispositivo {
+  +ID: int
+  +Modelo: String
+  +Marca: String
+  +Cliente: Cliente
+}
+
+class Reparacion {
+  +ID: int
+  +FechaInicio: Date
+  +FechaFin: Date
+  +TiempoEstimado: int
+  +Dispositivo: Dispositivo
+}
+
+class PiezaRequerida {
+  +ID: int
+  +Nombre: String
+  +Cantidad: int
+  +Reparacion: Reparacion
+}
+
+Cliente "1" -- "0..*" Dispositivo : posee
+Dispositivo "1" -- "1" Reparacion : requiere
+Reparacion "1" -- "0..*" PiezaRequerida : incluye
+@enduml

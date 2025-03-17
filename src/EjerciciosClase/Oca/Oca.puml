@@ -1,0 +1,33 @@
+@startuml
+Tablero -- Casilla
+Tablero -- Ficha
+Tablero -- Dado
+Ficha "*" -- "1" Casilla
+CasillaAvance -u-|> Casilla
+CasillaPenalizada -u-|> Casilla
+CasillaRetroceso -u-|> Casilla
+Juego - Tablero
+Consola - Juego
+
+
+class Casilla {
+    tipo : String
+    numero : byte
+}
+
+class CasillaAvance {
+    -casillaObjetivo : Casilla
+}
+
+class CasillaPenalizada {
+    -turnos : int
+}
+
+class CasillaRetroceso {
+    -casillaObjetivo : Casilla
+}
+
+
+
+
+@enduml

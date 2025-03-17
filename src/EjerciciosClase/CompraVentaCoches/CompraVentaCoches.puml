@@ -1,0 +1,9 @@
+@startuml
+' coste compra y precio venta
+' comunicacion por email, local o telefono
+' pueden tener que repararse y la reparación influye en el coste de compra
+' marca, modelo, matrícula, kilometros, años
+' tengo talleres asociados, telefono, persona contacto, direccion
+' clientes
+class Coche {}
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+Consola -- Juego
+Juego -- Mesa
+Mesa -- Mano
+Baraja -r- Mesa
+Mano -- Carta
+Carta -- Baraja
+Carta -- Palo
+Carta -- Numero
+enum Palo
+enum Numero
+@enduml
