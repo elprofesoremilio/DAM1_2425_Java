@@ -5,6 +5,10 @@ public class Contacto {
     private String telefono;
     String email;
 
+    public String toCSV() {
+        return nombre+","+telefono+","+email;
+    }
+
     public Contacto(String nombre, String telefono, String email) {
         this.nombre = nombre;
         this.telefono = telefono;
@@ -13,7 +17,6 @@ public class Contacto {
 
     @Override
     public String toString() {
-
         return String.format("\t ---- Contacto ----\n\t\tNombre: %s\n\t\tTelefono: %s\n\t\temail: %s",
                 nombre, telefono, email);
     }

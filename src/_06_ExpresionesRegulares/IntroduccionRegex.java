@@ -11,5 +11,7 @@ public class IntroduccionRegex {
         while (matcher.find()) {
             System.out.println("Palabra de dos caracteres encontrada: " + matcher.group());
         }
+
+        System.out.println("a".matches("[.]"));
     }
 }
