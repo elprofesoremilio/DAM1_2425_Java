@@ -1,16 +1,15 @@
-package _07_Swing.B_Componentes;
+package _07_Swing.A_Frames;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class A_ComponentesBasicos extends JFrame {
+public class C_ComponentesBasicos extends JFrame {
     private JPanel mainPanel;
     private JTextField campoTextoNombre;
     private JButton botonAceptar;
 
-    public A_ComponentesBasicos() {
+    public C_ComponentesBasicos() {
         super();
         configurar();
         rellenar();
@@ -51,7 +50,7 @@ public class A_ComponentesBasicos extends JFrame {
 
 
     public static void main(String[] args) {
-        A_ComponentesBasicos frame = new A_ComponentesBasicos();
+        C_ComponentesBasicos frame = new C_ComponentesBasicos();
         frame.iniciar();
     }
 }
