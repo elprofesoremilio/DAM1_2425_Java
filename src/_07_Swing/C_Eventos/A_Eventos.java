@@ -1,14 +1,14 @@
-package _07_Swing.B_Layouts;
+package _07_Swing.C_Eventos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class D_Eventos extends JFrame {
+public class A_Eventos extends JFrame {
     private JPanel mainPanel;
 
-    public D_Eventos() {
+    public A_Eventos() {
         initComponents();
     }
 
@@ -63,7 +63,7 @@ public class D_Eventos extends JFrame {
         gbc.gridx = 2;
         JButton boton4 = new JButton("Botón 4");
         mainPanel.add(boton4, gbc);
-        boton4.addActionListener(new D_GestorExterno());
+        boton4.addActionListener(new B_GestorExterno());
 
         gbc.weightx = 100;
         gbc.gridx = 1;
@@ -78,7 +78,7 @@ public class D_Eventos extends JFrame {
 
     public static void main(String[] args) {
 
-        D_Eventos f1 = new D_Eventos();
+        A_Eventos f1 = new A_Eventos();
 
     }
 

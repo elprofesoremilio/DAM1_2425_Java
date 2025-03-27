@@ -1,15 +1,15 @@
-package _07_Swing.B_Layouts;
+package _07_Swing.C_Eventos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class F_GestorEnJFrame extends JFrame implements ActionListener {
+public class C_GestorEnJFrame extends JFrame implements ActionListener {
     private JPanel mainPanel;
     private JTextField campoTextoNombre;
     private JButton botonAceptar;
 
-    public F_GestorEnJFrame() {
+    public C_GestorEnJFrame() {
         super();
         configurar();
         rellenar();
@@ -45,7 +45,7 @@ public class F_GestorEnJFrame extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
-        F_GestorEnJFrame frame = new F_GestorEnJFrame();
+        C_GestorEnJFrame frame = new C_GestorEnJFrame();
         frame.iniciar();
     }
 

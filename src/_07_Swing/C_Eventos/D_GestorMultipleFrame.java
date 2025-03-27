@@ -1,14 +1,14 @@
-package _07_Swing.B_Layouts;
+package _07_Swing.C_Eventos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class F_GestorMultipleFrame extends JFrame implements ActionListener {
+public class D_GestorMultipleFrame extends JFrame implements ActionListener {
     private JPanel mainPanel;
 
-    public F_GestorMultipleFrame() {
+    public D_GestorMultipleFrame() {
         initComponents();
     }
 
@@ -74,7 +74,7 @@ public class F_GestorMultipleFrame extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
 
-        F_GestorMultipleFrame f1 = new F_GestorMultipleFrame();
+        D_GestorMultipleFrame f1 = new D_GestorMultipleFrame();
     }
 
     @Override
