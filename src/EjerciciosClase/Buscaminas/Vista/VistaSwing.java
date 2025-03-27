@@ -11,6 +11,9 @@ public class VistaSwing extends JFrame {
     private Buscaminas buscaminas;
     private int rows;
     private int columns;
+    private JPanel panelCentroMinas;
+    private JPanel panelPrincipal;
+    private JPanel panelNorte;
 
     public VistaSwing() {
         super("Buscaminas");
@@ -22,18 +25,28 @@ public class VistaSwing extends JFrame {
     }
 
     public void iniciarTablero() {
+        panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BorderLayout());
+        panelNorte = new JPanel();
+        panelPrincipal.add(panelNorte,BorderLayout.NORTH);
+        panelNorte.add(new JLabel("010"));
+        panelNorte.add(new JLabel("     "));
+        panelNorte.add(new JButton(":D"));
+        panelNorte.add(new JLabel("     "));
+        panelNorte.add(new JLabel("100"));
+        this.setContentPane(panelPrincipal);
         buscaminas = new Buscaminas(Tablero.DIFICULTAD_FACIL);
-        JPanel tableroPanel = new JPanel();
-        this.setContentPane(tableroPanel);
+        panelCentroMinas = new JPanel();
+        panelPrincipal.add(panelCentroMinas,BorderLayout.CENTER);
         // Para que las celdas aparezcan en una tabla
         rows = buscaminas.getRows();
         columns = buscaminas.getColumns();
-        tableroPanel.setLayout(new GridLayout(rows,columns));
+        panelCentroMinas.setLayout(new GridLayout(rows,columns));
         tablaCeldas = new CeldaBoton[rows][columns];
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
                 tablaCeldas[row][column] = new CeldaBoton(this, row, column);
-                tableroPanel.add(tablaCeldas[row][column]);
+                panelCentroMinas.add(tablaCeldas[row][column]);
             }
         }
     }
