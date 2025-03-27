@@ -2,11 +2,13 @@ package _07_Swing.B_Layouts;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class C_GridBagLayout extends JFrame {
+public class F_GestorMultipleFrame extends JFrame implements ActionListener {
     private JPanel mainPanel;
 
-    public C_GridBagLayout() {
+    public F_GestorMultipleFrame() {
         initComponents();
     }
 
@@ -34,23 +36,35 @@ public class C_GridBagLayout extends JFrame {
         gbc.gridy = 0;
         gbc.gridwidth = gbc.gridheight = 1;
         gbc.weightx = gbc.weighty = 0;
-        mainPanel.add(new JButton("Botón 1"), gbc);
+        JButton boton1 = new JButton("Botón 1");
+        mainPanel.add(boton1, gbc);
+
 
         gbc.gridy = 1;
-        mainPanel.add(new JButton("Botón 2"), gbc);
+        JButton boton2 = new JButton("Botón 2");
+        mainPanel.add(boton2, gbc);
+
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        mainPanel.add(new JButton("Botón 3"), gbc);
+        JButton boton3 = new JButton("Botón 3");
+        mainPanel.add(boton3, gbc);
 
 
         gbc.gridx = 2;
-        mainPanel.add(new JButton("Botón 4"), gbc);
+        JButton boton4 = new JButton("Botón 4");
+        mainPanel.add(boton4, gbc);
 
         gbc.weightx = 100;
         gbc.gridx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         mainPanel.add(new JTextField("Campo texto"), gbc);
+
+        boton1.addActionListener(this);
+        boton2.addActionListener(this);
+        boton3.addActionListener(this);
+        boton4.addActionListener(this);
+
         // Termina la fiesta
         // Esto va al final siempre y en ese orden
         pack();
@@ -59,6 +73,22 @@ public class C_GridBagLayout extends JFrame {
     }
 
     public static void main(String[] args) {
-        new C_GridBagLayout();
+
+        F_GestorMultipleFrame f1 = new F_GestorMultipleFrame();
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton boton = (JButton) e.getSource();
+        String numero = "";
+        switch (boton.getText()) {
+            case "Botón 1": numero = "1"; break;
+            case "Botón 2": numero = "2"; break;
+            case "Botón 3": numero = "3"; break;
+            case "Botón 4": numero = "4"; break;
+        }
+        JOptionPane.showMessageDialog(this,"Hola botón " + numero);
+    }
+
 }
+
