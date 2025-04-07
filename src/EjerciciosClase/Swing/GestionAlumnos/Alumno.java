@@ -10,6 +10,11 @@ public class Alumno {
         this.edad = edad;
     }
 
+    public static Alumno fromCSV(String linea) {
+        String[] values = linea.split(",");
+        return new Alumno(values[0], values[1], Byte.parseByte(values[2]));
+    }
+
     public String getCorreo() {
         return correo;
     }
@@ -32,5 +37,9 @@ public class Alumno {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String toCSV() {
+        return nombre+","+correo+","+edad;
     }
 }
